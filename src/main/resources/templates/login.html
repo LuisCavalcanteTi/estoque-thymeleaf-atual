@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang=pt-br>
+<head>
+<title>Login</title>
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+<meta name=description content="">
+<meta name=keywords content="">
+<meta name=author content='Luis Cavalcante'>
+
+
+
+
+
+
+
+<link  rel="stylesheet"  th:href="@{/cssExternos/w3/w3.css}" />
+<link  rel="stylesheet"  th:href="@{/css/background.css}" />
+
+
+
+
+
+
+
+</head>
+<body>
+
+  <article   class= "w3-container" id="img1">
+        
+          <section  id="sumir" class="w3-center ">
+        <h1 class="w3-jumbo "   style="text-shadow:2px 2px 0 #444 " >A R T E S A N A R T</h1>
+        
+        <br><br>
+        <h2 >Your Space, Our life</h2>
+        <br><br>  
+  
+        
+        <div class="w3-margin-top">
+        <a class="w3-btn w3-green" onclick="a();b();" >Login</a>
+    </div>
+   
+    </section>
+<br><br>
+    <section  id="demo"  style="display:none" >
+    
+       
+        <div   class="w3-card-4 w3-center  w3-display-middle "  style="width:60%" >
+        <img src="img/logoPreto.png" width="500" height="220">
+		<form th:action="@{/login}"  Method="post"  >
+        
+            <br>
+			<p>
+				
+				 <input	 name="username" type="text" placeholder="Login">
+			</p>
+			<p>
+                <br>	
+				<input  name="password" type="password" placeholder="Senha">
+			</p>
+            <br>
+	<p>
+			<button  class="w3-btn w3-green" type="submit"  > Confirmar  </button>
+			</p>
+	
+		</form>
+    </div>
+
+    </section>
+      </article>
+      
+           
+                       
+            
+        
+   <script>
+function a() {
+    document.getElementById('sumir').style.display='none';
+}
+function b() {
+   
+    document.getElementById('demo').style.display='block';
+}
+
+   </script>
+   
+
+</body>
+</html>

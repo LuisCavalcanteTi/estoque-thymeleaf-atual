@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang=pt-br>
+<head>
+<title>Requisição de Material</title>
+<meta charset=UTF-8>
+
+<meta name=description content="">
+<meta name=keywords content="">
+<meta name=author content='Luis'>
+
+<link th:href="@{/css/requisitanteRequisicaoPedidos.css}"
+	rel="stylesheet" />
+<link th:href="@{/css/menu.css}" rel="stylesheet" />
+<link th:href="@{/cssExternos/w3/w3.css}" rel="stylesheet" />
+
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+.w3-sidebar a {
+	font-family: "Roboto", sans-serif
+}
+
+body, h1, h2, h3, h4, h5, h6, .w3-wide {
+	font-family: "Montserrat", sans-serif;
+}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+</head>
+<body onload="onLoad()" class="w3-content " style="max-width: 1920px">
+
+
+
+	<header class="w3-bar w3-top  w3-red w3-xlarge"
+		style="border: 3px solid #cc0000;">
+		<div class="w3-bar-item w3-padding-24 w3-wide w3-margin-right">ARTESANART</div>
+		<div class="w3-bar-item w3-padding-24  w3-margin-right">Requição
+			de Materiais</div>
+
+		<a href="javascript:void(0)"
+			class="w3-bar-item w3-button w3-padding-24 w3-right"
+			onclick="w3_open()"><i class="fa fa-bars"></i></a>
+	</header>
+
+	<div class="w3-overlay w3-hide" onclick="w3_close()"
+		style="cursor: pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+
+	<article class="w3-main w3-animate-zoom" id="verr"
+		style="margin-top: 100px">
+
+
+
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class="w3-container ">
+			<h1>Testando o código</h1>
+		</div>
+
+
+		<form th:object="${requisicaoNovoPedido}"
+			class="w3-container w3-card-4 " action="cadastro" method="POST">
+
+
+
+
+
+
+
+			<div id="verr">
+				<p>
+					<label for="medida" class="w3-text-blue"><b>Digite um
+							produto</b></label>
+				</p>
+
+				<input classs="w3-input w3-border" list="pesquisarCodigo" />
+
+				<datalist v-model="codigo" id="pesquisarCodigo"
+					class="w3-select w3-text-black">
+
+
+					<option v-for="produtos in produtos"
+						v-bind:value="produtos.codigo ">{{produtos.descricao }}
+					</option>
+
+
+
+
+
+				</datalist>
+
+
+				<br>
+
+				<p>
+					<label for="quantidade" class="w3-text-blue"><b>Quantidade</b></label>
+					<input class="w3-input w3-border" type="text">
+				</p>
+
+				<p>
+					<label for="medida" class="w3-text-blue"><b>Unidade de
+							Medida</b></label>
+				</p>
+				<p>
+					<select class="w3-select" name="medida">
+						<option value="" disabled selected>Escolha a unidade de
+							medida</option>
+						<option value="Unidade">Unidade</option>
+						<option value="Metros">Metros</option>
+						<option value="Pacote">Pacote</option>
+						<option value="Rolo">Rolo</option>
+					</select>
+
+				</p>
+
+				<p>
+					<button type="submit" class="w3-btn w3-blue">Confirmar</button>
+				</p>
+		</form>
+
+
+
+	</article>
+
+	<script type="text/javascript">
+function update() {
+	var select = document.getElementById('language');
+	var option = datalist.options[datalist.selectedIndex];
+
+	document.getElementById('value').value = option.value;
+	document.getElementById('text').value = option.text;
+}
+
+			update();
+		</script>
+	´
+
+
+	<script>
+	 function onLoad(){
+		 
+		 var app = new Vue({
+			  el: '#verr',
+			  data: {
+				  codigo: '',
+				  descricao:'',
+				  
+			    produtos: []
+			  },
+			  
+			  mounted () {
+			    axios
+			      .get('http://localhost:8080/usuario/requisitarPedido/formulario/listar')
+			      .then(response => (this.produtos = response.data))
+			  }
+			});
+	 }
+	 
+	 
+	 
+	 
+	 
+	</script>
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<script>
+// Accordion 
+
+
+
+
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+ 
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+
+}
+</script>
+
+
+
+
+
+</body>
+</html>
